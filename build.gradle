@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile (
+            'org.freemarker:freemarker:2.3.20',
+            'org.springframework:spring-webmvc:4.0.6.RELEASE',
+            'org.springframework:spring-context-support:4.0.6.RELEASE',
+            'commons-httpclient:commons-httpclient:3.1',
+            'junit:junit:4.11'
+    )
+    compile (
+            'org.freemarker:freemarker:2.3.20',
+            'org.springframework:spring-webmvc:4.0.6.RELEASE',
+            'org.springframework:spring-context-support:4.0.6.RELEASE',
+            'commons-httpclient:commons-httpclient:3.1',
+            'junit:junit:4.11'
+    )
+}
+
+task "mvn" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
